@@ -1,26 +1,24 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const generateReadMe=({projectName, description, tableOfContents, installation, usage, tests, licenses, acknowledges, contribute, inquiry}
 
-// Use writeFileSync method to use promises instead of a callback function
-promptUser = () {
+promptUser = () => {
   return inquirer.prompt([
     {
         type: 'input',
         name: 'projectName',
         message: 'What is your projects name?',
-      },
+    },
     {
       type: 'input',
       name: 'description',
       message: 'Briefly describe your project.',
     },
-    {
-      type: 'input',
-      name: 'tableOfContents',
-      message: 'Table of contents:',
-    },
+    // {
+    //   type: 'input',
+    //   name: 'tableOfContents',
+    //   message: 'Table of contents:',
+    // },
     {
       type: 'input',
       name: 'installation',
@@ -37,33 +35,71 @@ promptUser = () {
       message: 'Tests',
     },
     {
-      type: 'input',
+      type: 'checkbox',
       name: 'licenses',
-      message: 'Enter licenses',
+      choices: ["IBM","MIT","NTP"],
+      message: 'Select licenses',
     },
     {
         type: 'input',
         name: 'acknowledgements',
         message: 'Enter any acknowledgments',
-      },
+    },
     {
         type: 'input',
         name: 'contribute',
-        message: 'Would you like to contribute?',
+        message: 'How to contribute?',
     },
     {
         type: 'input',
         name: 'inquiry',
-        message: 'Got questions?',
+        message: 'Email for questions',
     },
+  ])
 };
 
-]).then (ans=>{
-    console.log (ans);
-    fs.writeFile('user.md', generateReadMe (err)=>{
-        if(err){
-            throw err
-        }
-      else (promptUser)
-    })
-});
+const generateReadMe=({projectName, description, tableOfContents, installation, usage, tests, licenses, acknowledgements, contribute, inquiry}) => 
+`# Project: ${projectName} 
+### Table of Contents: 
+${tableOfContents}
+### Description: 
+${description} 
+### Installation: 
+${installation} 
+### Usage: 
+${usage}
+### Tests: 
+${tests}
+### Licenses: 
+${licenses}
+### Acknowledgments: 
+${acknowledgements}
+### Contributions: 
+${contribute}
+### Email for inquiries: 
+${inquiry}`;
+
+
+// function renderLicense(licenses) {
+//   if (licensing === "IBM"){
+//       return`[![Licensing: IPL 1.0](https://img.shields.io/badge/License-IBM-lightgrey](https://opensource.org/licenses/IBM)`
+//   }
+//   else if(licenseType === 'MIT') {
+//     return`[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)(https://opensource.org/licenses/MIT)]`
+//   }
+//   else if(licenseType === 'NTP') {
+//     return`[![License: NTP](https://img.shields.io/badge/License-NTP-lightgrey)(https://opensource.org/licenses/NTP)]`
+//   }
+//   return renderLicense()
+// };
+
+const init = () => {
+  promptUser()
+    .then((result) =>fs.writeFileSync("user.md", generateReadMe(result)))
+    .then(() => console.log("Successfully generated ReadMe!"))
+    .catch((err) => console.log(err));
+};
+init();
+
+
+
