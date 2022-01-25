@@ -33,12 +33,16 @@ promptUser = () => {
       type: 'input',
       name: 'tests',
       message: 'Tests',
-    },
+    },// {
+      //   type: 'checkbox',
+      //   name: 'licenses',
+      //   choices: ["IBM","MIT","NTP"],
+      //   message: 'Select licenses',
+      // },
     {
-      type: 'checkbox',
+      type: 'input',
       name: 'licenses',
-      choices: ["IBM","MIT","NTP"],
-      message: 'Select licenses',
+      message: 'Which license do you want?',
     },
     {
         type: 'input',
@@ -58,10 +62,17 @@ promptUser = () => {
   ])
 };
 
-const generateReadMe=({projectName, description, tableOfContents, installation, usage, tests, licenses, acknowledgements, contribute, inquiry}) => 
+const generateReadMe=({projectName, description, installation, usage, tests, licenses, acknowledgements, contribute, inquiry}) => 
 `# Project: ${projectName} 
 ### Table of Contents: 
-${tableOfContents}
+* [Description](#Description)
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [Tests](#Tests)
+* [Licenses](#Licenses)
+* [Acknowledgements](#Acknowledgments)
+* [Contributions](#Contributions)
+* [Email](#Email-for-inquiries)
 ### Description: 
 ${description} 
 ### Installation: 
@@ -71,7 +82,7 @@ ${usage}
 ### Tests: 
 ${tests}
 ### Licenses: 
-${licenses}
+![license](https://img.shields.io/badge/License-${licenses}-lightgrey.svg)
 ### Acknowledgments: 
 ${acknowledgements}
 ### Contributions: 

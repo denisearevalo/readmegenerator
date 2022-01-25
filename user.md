@@ -1,19 +1,26 @@
 # Project: ReadMe Generator 
 ### Table of Contents: 
-undefined
+* [Description](#Description)
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [Tests](#Tests)
+* [Licenses](#Licenses)
+* [Acknowledgements](#Acknowledgments)
+* [Contributions](#Contributions)
+* [Email](#Email-for-inquiries)
 ### Description: 
-An easy to use readme md generator 
+An easy to use readme md generator. 
 ### Installation: 
 node.js and npm 
 ### Usage: 
-After installation, follow the prompts to generate a read me.
+After install follow the prompts.
 ### Tests: 
 npm run test
 ### Licenses: 
-NTP
+![license](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 ### Acknowledgments: 
 TAs and peers
 ### Contributions: 
-Submit an issue via github
+Submit an issue via github and I will get to it as soon as possible.
 ### Email for inquiries: 
-deniwonder8@gmail.com for an inquiries will respond as soon as possible.
+Send and email and I will respond as soon as possible.
